@@ -29,7 +29,7 @@ export default {
   },
 
   welcome: {
-    title: 'There is no single pizza, pizza is a world.',
+    title: ['There is no single pizza,', 'pizza is a world.'],
     sub: 'Discover pizzerias, earn points and join the pizza community.',
     perks: [
       { icon: 'map-pin', title: 'Find your pizzeria', text: 'Map, reviews and favourites from people who know pizza.' },
