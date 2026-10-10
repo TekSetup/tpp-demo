@@ -2,16 +2,15 @@
 
 | Asset | Source | License |
 |---|---|---|
-| Recipe, course, event and reward pictures | Generated in code by `js/art.js` (deterministic SVG illustrations) | Project-owned, no third-party images |
-| Pizzería photos (Discover, detail, gallery, favourites) | Real photos in `assets/photos/`, listed below | CC0 / public domain |
+| All pizza pictures (pizzerías, recipes, courses, events, rewards, empty states) | Real photos in `assets/photos/`, listed below | CC0 / public domain |
 | Schematic city map | Hand-written SVG in `js/screens/home.js` | Project-owned |
 | Icons | Hand-written inline SVG in `js/icons.js`, in the style of Lucide (stroke 1.75). The `slice` icon is custom | Lucide is ISC licensed; shapes here are redrawn for this project |
 | Logo | `assets/logo/logo-color.png`, a transparent cut-out of the client's full-color logo, wired in `logo()` in `js/ui.js` | Client trademark, used with permission for this demo |
 | Fonts | Fraunces and Inter via Google Fonts | SIL Open Font License 1.1 |
 
-When real photos replace the generated illustrations, add one row per image with source, author and license.
+Add one row per image with source, author and license when a photo is added or replaced.
 
-## Pizzería photos (CC0 / public domain)
+## Photos (CC0 / public domain)
 
 Found through the Openverse API filtered to licences CC0 and Public Domain Mark. They are generic pizza, oven and dining photos used as stand-ins: **they do not show the fictitious venues in the mock data**. CC0 does not require attribution, but the sources are kept here for traceability. Files were resized to 800 px wide and recompressed.
 
@@ -43,4 +42,4 @@ Found through the Openverse API filtered to licences CC0 and Public Domain Mark.
 | `pizza-53.jpg` | Lyon 3e - Restaurant Pepperoni, pizza | Romainbehar | wikimedia | CC0 | https://commons.wikimedia.org/w/index.php?curid=77566005 |
 | `pizza-66.jpg` | Dough bakery | unknown | rawpixel | CC0 | https://www.rawpixel.com/image/6038126/dough-bakery-free-public-domain-cc0-photo |
 
-Which venue uses which photo is defined in `data/photos.js`.
+Which venue, recipe, course, event or reward uses which photo is defined in `data/photos.js`. Some photos are reused across sections.

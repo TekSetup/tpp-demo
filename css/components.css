@@ -2,8 +2,6 @@
 
 .icon { flex: none; }
 .icon--fill { fill: currentColor; }
-.art, .art-slice { width: 100%; height: 100%; }
-.art-slice { width: auto; height: auto; }
 .logo { flex: none; display: block; width: auto; }
 
 /* ---------- app bar ---------- */
@@ -123,7 +121,7 @@ textarea.input { min-height: 96px; resize: vertical; }
 .fav-btn:active { transform: scale(.92); }
 
 .empty { display: grid; justify-items: center; gap: var(--space-3); padding: var(--space-8) var(--space-4); text-align: center; }
-.empty__art { opacity: .95; }
+.empty__art { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: var(--shadow-1); }
 .done-badge { display: grid; place-items: center; width: 88px; height: 88px; margin: 0 auto; border-radius: 50%; background: var(--color-secondary-soft); color: var(--color-secondary); }
 .row-btn { display: flex; align-items: center; gap: var(--space-3); width: 100%; min-height: 52px; padding: 0 var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); font-weight: 600; text-align: left; }
 .row-btn span { flex: 1; }

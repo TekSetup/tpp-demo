@@ -32,7 +32,7 @@ js/
   lang.js             setLang(): swaps dictionary + localized mock data (es, it, en, fr)
   tour.js             first-run guided tour (spotlight + coach card)
   i18n/               es.js, en.js, it.js, fr.js (UI copy) and content-*.js (translated mock data)
-  icons.js, art.js    inline SVG icons, generated pizza illustrations
+  icons.js            inline SVG icons
   screens/            one file per screen
 data/
   config.js           THE place to tune caps, point values, level thresholds
@@ -60,7 +60,7 @@ assets/
 - **Levels** use lifetime points earned, so redeeming rewards never lowers a level.
 - **Caps** are lifetime per category. Pending (unvalidated) referral points count against the cap.
 - **Placeholders:** values marked `PLACEHOLDER` in `data/config.js` and the logo are awaiting client confirmation (see the private project brief).
-- **No external images or keys:** pizzería "photos" are generated SVG illustrations and the map is a schematic SVG. The only network request is Google Fonts (Fraunces, Inter).
+- **No external images or keys:** all pizza photos are local CC0 files in `assets/photos/` and the map is a schematic SVG. The only network request is Google Fonts (Fraunces, Inter).
 
 ## Deploy
 
