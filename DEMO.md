@@ -21,6 +21,6 @@ Use this path to show the client everything that matters. Start from a fresh sta
 ## Known simplifications (say these out loud in the demo)
 
 - Pizzerías, reviews, jobs and events are fictitious example data.
-- Pizzería pictures are generated illustrations, the map is schematic and the logo is a placeholder.
+- Pizzería pictures are real CC0 stock photos, not photos of the (fictitious) venues. Recipe, event and reward pictures are still generated illustrations, and the map is schematic.
 - Point values, level thresholds and rewards are provisional until the client confirms them.
 - There is no real backend: verification codes, validation of referrals and media playback are simulated.

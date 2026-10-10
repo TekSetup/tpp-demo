@@ -9,6 +9,7 @@ import { places } from '../data/places.js';
 import { jobs } from '../data/jobs.js';
 import { recipes, courses, podcast } from '../data/content.js';
 import { rewards } from '../data/rewards.js';
+import { photoOf } from '../data/photos.js';
 
 export { pizzaArt };
 
@@ -219,4 +220,9 @@ export function ledgerLabel(e) {
     }
   }
   return e.label && !e.detail ? e.label : (name ? `${head} · ${name}` : head);
+}
+
+// Real (CC0) photo for a pizzería. `src` defaults to the venue's main photo; `alt` empty marks it decorative.
+export function placePhoto(placeId, { src = photoOf(placeId), alt = '', eager = false } = {}) {
+  return `<img class="photo" src="${esc(src)}" alt="${esc(alt)}" ${eager ? '' : 'loading="lazy"'} decoding="async">`;
 }

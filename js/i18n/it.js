@@ -36,6 +36,7 @@ export default {
       { icon: 'slice', title: 'Guadagna punti con tutto', text: 'Commenta, impara, ascolta e riscatta sconti.' },
       { icon: 'briefcase', title: 'Lavora nel mondo della pizza', text: 'Offerte di lavoro pizzaiolo per zona.' },
     ],
+    languages: 'Lingue',
     start: 'Inizia', guest: 'Esplora come ospite', have: 'Ho già un account',
   },
 
@@ -102,6 +103,7 @@ export default {
     yourReview: 'La tua recensione', userReview: 'Tu',
     directionsToast: 'Apro la tua app di mappe (simulato).', shareToast: 'Link copiato (simulato).',
     checkinToast: (n) => `Check-in da ${n}.`, checkinAgain: 'Hai già fatto check-in qui.',
+    photoMain: (n) => `Foto di esempio di pizza per ${n}`,
     photoAlt: (n, i) => `Foto di esempio ${i} di ${n}`,
     reviewsHeading: (n) => `${n} recensioni`,
     tabsLabel: 'Sezioni della pizzeria',

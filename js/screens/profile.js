@@ -7,7 +7,7 @@ import { LANGS, setLang } from '../lang.js';
 import { places } from '../../data/places.js';
 import { jobs } from '../../data/jobs.js';
 import { CITIES, DEMO_BONUS } from '../../data/config.js';
-import { $, $$, esc, icon, header, toast, openSheet, openLevelUp, applyTheme, emptyState, stars, fmtDate, pizzaArt } from '../ui.js';
+import { $, $$, esc, icon, header, toast, openSheet, openLevelUp, applyTheme, emptyState, stars, fmtDate, placePhoto } from '../ui.js';
 
 const sw = (id, label, on) => `<div class="switch-row"><b id="${id}-l">${esc(label)}</b><button class="switch" type="button" role="switch" id="${id}" aria-checked="${on}" aria-labelledby="${id}-l"><span></span></button></div>`;
 
@@ -48,7 +48,7 @@ export function render(el) {
 
       ${authed ? `
       <section class="stack"><h2 class="h2">${esc(t.favorites)}</h2>
-        ${favs.length ? `<ul class="list-plain">${favs.map((p) => `<li><a class="mini-row" href="#/place/${p.id}"><span class="mini-row__art">${pizzaArt(p.id, '')}</span><span><b>${esc(p.name)}</b><span class="muted small block">${esc(p.area)} · ${esc(s.cities[p.city])}</span></span>${icon('chevron-right', { size: 18 })}</a></li>`).join('')}</ul>` : `<p class="muted">${esc(t.favEmpty)}</p>`}</section>
+        ${favs.length ? `<ul class="list-plain">${favs.map((p) => `<li><a class="mini-row" href="#/place/${p.id}"><span class="mini-row__art">${placePhoto(p.id)}</span><span><b>${esc(p.name)}</b><span class="muted small block">${esc(p.area)} · ${esc(s.cities[p.city])}</span></span>${icon('chevron-right', { size: 18 })}</a></li>`).join('')}</ul>` : `<p class="muted">${esc(t.favEmpty)}</p>`}</section>
 
       <section class="stack"><h2 class="h2">${esc(t.activity)}</h2>
         <h3 class="h3">${esc(t.actReviews)}</h3>${reviews.length ? `<ul class="list-plain">${reviews.map((r) => `<li class="card post"><b>${esc(r.place.name)}</b>${stars(r.rating)}<span class="sr-only">${esc(s.common.ratingOf(r.rating))}</span><p class="small">${esc(r.text)}</p><span class="muted small">${esc(fmtDate(r.date))}</span></li>`).join('')}</ul>` : `<p class="muted small">${esc(t.actNone)}</p>`}

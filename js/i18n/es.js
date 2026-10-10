@@ -37,6 +37,7 @@ export default {
       { icon: 'slice', title: 'Gana puntos por todo', text: 'Comenta, aprende, escucha y canjea descuentos.' },
       { icon: 'briefcase', title: 'Trabaja en el mundillo', text: 'Ofertas de empleo pizzero por zona.' },
     ],
+    languages: 'Idiomas',
     start: 'Empezar', guest: 'Explorar como invitado', have: 'Ya tengo cuenta',
   },
 
@@ -103,6 +104,7 @@ export default {
     yourReview: 'Tu reseña', userReview: 'Tú',
     directionsToast: 'Abriendo tu app de mapas (simulado).', shareToast: 'Enlace copiado (simulado).',
     checkinToast: (n) => `Check-in en ${n}.`, checkinAgain: 'Ya hiciste check-in aquí.',
+    photoMain: (n) => `Foto de ejemplo de pizza para ${n}`,
     photoAlt: (n, i) => `Foto de ejemplo ${i} de ${n}`,
     reviewsHeading: (n) => `${n} reseñas`,
     tabsLabel: 'Secciones de la pizzería',

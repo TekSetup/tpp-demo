@@ -5,7 +5,7 @@ import { navigate } from '../router.js';
 import { get, isFavorite, toggleFavorite, setCity, balance } from '../state.js';
 import { places, styleIds } from '../../data/places.js';
 import { CITIES } from '../../data/config.js';
-import { $, $$, esc, icon, logo, chip, ratingRow, pizzaArt, toast, openSheet, emptyState, requireAuth } from '../ui.js';
+import { $, $$, esc, icon, logo, chip, ratingRow, placePhoto, toast, openSheet, emptyState, requireAuth } from '../ui.js';
 
 // Module-level so filters survive going into a pizzería and coming back.
 const view = { mode: 'list', q: '', chips: new Set(), minRating: 0, maxKm: 0, sort: 'near', selected: null };
@@ -31,7 +31,7 @@ function filtered(city) {
 export function placeCard(p) {
   const fav = isFavorite(p.id);
   return `<article class="card place-card">
-    <div class="place-card__art">${pizzaArt(p.id, `Ilustración de pizza de ${p.name}`)}
+    <div class="place-card__art">${placePhoto(p.id, { alt: s.place.photoMain(p.name) })}
       <button class="fav-btn" type="button" data-fav="${p.id}" aria-pressed="${fav}" aria-label="${esc(fav ? s.home.favRemove : s.home.favAdd)}: ${esc(p.name)}">${icon('heart', { size: 22, fill: fav })}</button>
       ${p.isNew ? `<span class="badge-new">${esc(s.home.isNew)}</span>` : ''}
     </div>
@@ -53,7 +53,7 @@ function mapMarkup(list) {
       <rect class="map-park" x="8" y="12" width="22" height="16" rx="4"/><rect class="map-park" x="68" y="14" width="18" height="12" rx="4"/>
       <g class="map-road" fill="none" stroke-linecap="round"><path d="M0 40 L100 34" stroke-width="2.2"/><path d="M0 62 L100 56" stroke-width="1.6"/><path d="M30 0 L38 100" stroke-width="2"/><path d="M62 0 L58 100" stroke-width="1.6"/><path d="M0 20 L100 18" stroke-width="1"/><path d="M82 0 L88 100" stroke-width="1"/><path d="M12 0 L18 100" stroke-width="1"/><path d="M0 82 L100 74" stroke-width="1"/></g>
     </svg>${pins}
-    ${sel ? `<a class="map__card card" href="#/place/${sel.id}"><div class="map__thumb">${pizzaArt(sel.id, '')}</div><div><h3 class="h3">${esc(sel.name)}</h3>${ratingRow(sel.rating, sel.reviewCount)}<p class="muted small">${esc(sel.area)} · ${esc(s.common.km(sel.km))}</p></div>${icon('chevron-right')}</a>` : ''}
+    ${sel ? `<a class="map__card card" href="#/place/${sel.id}"><div class="map__thumb">${placePhoto(sel.id)}</div><div><h3 class="h3">${esc(sel.name)}</h3>${ratingRow(sel.rating, sel.reviewCount)}<p class="muted small">${esc(sel.area)} · ${esc(s.common.km(sel.km))}</p></div>${icon('chevron-right')}</a>` : ''}
   </div>`;
 }
 
