@@ -3,12 +3,16 @@ import { navigate } from '../router.js';
 import { continueAsGuest } from '../state.js';
 import { $, $$, esc, icon, logo } from '../ui.js';
 import { LANGS, setLang } from '../lang.js';
+import { flag } from '../flags.js';
 
 export function render(el) {
   el.innerHTML = `
     <section class="welcome">
-      <div class="langbar" role="group" aria-label="Idioma / Language / Lingua / Langue">
-        ${LANGS.map((l) => `<button type="button" data-lang="${l.code}" lang="${l.code}" aria-pressed="${l.code === s.lang}" aria-label="${esc(l.name)}">${l.code.toUpperCase()}</button>`).join('')}
+      <div class="langbar" role="group" aria-labelledby="langs-t">
+        <p class="langbar__title" id="langs-t">${esc(s.welcome.languages)}</p>
+        <div class="langbar__row">
+          ${LANGS.map((l) => `<button type="button" class="lang" data-lang="${l.code}" lang="${l.code}" aria-pressed="${l.code === s.lang}" aria-label="${esc(l.name)}"><span class="lang__flag">${flag(l.code)}</span><span class="lang__code" aria-hidden="true">${l.code}</span></button>`).join('')}
+        </div>
       </div>
       <div class="welcome__hero">
         <div class="welcome__logo">${logo(120)}</div>

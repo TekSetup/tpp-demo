@@ -36,6 +36,7 @@ export default {
       { icon: 'slice', title: 'Earn points for everything', text: 'Comment, learn, listen and redeem discounts.' },
       { icon: 'briefcase', title: 'Work in the pizza world', text: 'Pizza job openings by area.' },
     ],
+    languages: 'Languages',
     start: 'Get started', guest: 'Explore as a guest', have: 'I already have an account',
   },
 
@@ -102,6 +103,7 @@ export default {
     yourReview: 'Your review', userReview: 'You',
     directionsToast: 'Opening your maps app (simulated).', shareToast: 'Link copied (simulated).',
     checkinToast: (n) => `Checked in at ${n}.`, checkinAgain: 'You already checked in here.',
+    photoMain: (n) => `Sample pizza photo for ${n}`,
     photoAlt: (n, i) => `Sample photo ${i} of ${n}`,
     reviewsHeading: (n) => `${n} reviews`,
     tabsLabel: 'Pizzeria sections',

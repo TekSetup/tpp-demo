@@ -19,9 +19,9 @@ import { patch } from './state.js';
 // Endonyms: each language is always shown in its own language.
 export const LANGS = [
   { code: 'es', name: 'Español' },
+  { code: 'fr', name: 'Français' },
   { code: 'it', name: 'Italiano' },
   { code: 'en', name: 'English' },
-  { code: 'fr', name: 'Français' },
 ];
 const dicts = { es, en, it, fr };
 const content = { en: cEn, it: cIt, fr: cFr };

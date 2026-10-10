@@ -4,7 +4,8 @@ import { s } from '../strings.js';
 import { navigate } from '../router.js';
 import { get, isFavorite, toggleFavorite, reviewsFor, addReview, earn, hasCheckedIn, checkIn } from '../state.js';
 import { places } from '../../data/places.js';
-import { $, $$, esc, icon, ratingRow, stars, pizzaArt, toast, openSheet, requireAuth, notifyEarn, fmtDate, field, fieldError, emptyState } from '../ui.js';
+import { galleryOf } from '../../data/photos.js';
+import { $, $$, esc, icon, ratingRow, stars, placePhoto, toast, openSheet, requireAuth, notifyEarn, fmtDate, field, fieldError, emptyState } from '../ui.js';
 
 let tab = 'about';
 
@@ -28,7 +29,7 @@ export function render(el, { params }) {
         </dl>`;
     }
     if (current === 'photos') {
-      return `<div class="photos">${[0, 1, 2, 3, 4, 5].map((i) => `<div class="photos__item">${pizzaArt(p.id * 10 + i + 1, s.place.photoAlt(p.name, i + 1))}</div>`).join('')}</div>`;
+      return `<div class="photos">${galleryOf(p.id).map((src, i) => `<div class="photos__item">${placePhoto(p.id, { src, alt: s.place.photoAlt(p.name, i + 1) })}</div>`).join('')}</div>`;
     }
     const mine = reviewsFor(p.id);
     const all = [...mine.map((r) => reviewItem(r, true)), ...p.reviews.map((r) => reviewItem(r, false))];
@@ -39,7 +40,7 @@ export function render(el, { params }) {
   function paint() {
     const fav = isFavorite(p.id);
     el.innerHTML = `
-      <div class="place-hero">${pizzaArt(p.id, `Ilustración de pizza de ${p.name}`)}
+      <div class="place-hero">${placePhoto(p.id, { alt: s.place.photoMain(p.name), eager: true })}
         <div class="place-hero__bar">
           <button class="icon-btn icon-btn--float" data-back="/home" aria-label="${esc(s.place.back)}">${icon('chevron-left')}</button>
           <div class="row">
