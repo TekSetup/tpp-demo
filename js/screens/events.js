@@ -6,7 +6,7 @@ import { isGoing, toggleGoing } from '../state.js';
 import { events, feed } from '../../data/events.js';
 import { places } from '../../data/places.js';
 import { CITIES } from '../../data/config.js';
-import { $, $$, esc, icon, header, stars, pizzaArt, toast, requireAuth, fmtDate, fmtDateLong } from '../ui.js';
+import { $, $$, esc, icon, header, stars, photoImg, toast, requireAuth, fmtDate, fmtDateLong } from '../ui.js';
 
 let cityFilter = 'all';
 
@@ -18,7 +18,7 @@ export function render(el, { query }) {
     const list = events.filter((e) => cityFilter === 'all' || e.city === cityFilter).sort((a, b) => a.date.localeCompare(b.date));
     return `<div class="field"><label class="label" for="ecity">${esc(s.jobs.city)}</label>
       <select class="input" id="ecity"><option value="all">${esc(t.all)}</option>${CITIES.map((c) => `<option value="${c}" ${cityFilter === c ? 'selected' : ''}>${esc(s.cities[c])}</option>`).join('')}</select></div>
-      <ul class="list-plain">${list.map((e) => `<li><article class="card event"><div class="event__art">${pizzaArt(e.seed, '')}
+      <ul class="list-plain">${list.map((e) => `<li><article class="card event"><div class="event__art">${photoImg('event-' + e.id)}
         <span class="event__date"><b>${new Date(e.date).getDate()}</b>${esc(fmtDate(e.date, { month: 'short' }))}</span></div>
         <div class="event__body"><h3 class="h3"><a class="stretched" href="#/event/${e.id}">${esc(e.title)}</a></h3>
         <p class="muted small">${icon('map-pin', { size: 14 })} ${esc(e.venue)}, ${esc(s.cities[e.city])}</p>
@@ -61,7 +61,7 @@ export function renderDetail(el, { params }) {
   el.innerHTML = `
     ${header({ title: e.title, back: '/events' })}
     <div class="page">
-      <div class="event__hero">${pizzaArt(e.seed, '')}</div>
+      <div class="event__hero">${photoImg('event-' + e.id)}</div>
       <dl class="facts">
         <div><dt>${icon('calendar', { size: 18 })}${esc(t.when)}</dt><dd>${esc(fmtDateLong(e.date))} · ${esc(e.time)}</dd></div>
         <div><dt>${icon('map-pin', { size: 18 })}${esc(t.where)}</dt><dd>${esc(e.venue)}, ${esc(s.cities[e.city])}</dd></div>

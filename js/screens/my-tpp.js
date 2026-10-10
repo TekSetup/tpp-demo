@@ -5,7 +5,7 @@ import { navigate, refresh } from '../router.js';
 import { get, isAuthed, balance, levelInfo, earnedIn, spend, levelRank } from '../state.js';
 import { POINTS, LEVELS } from '../../data/config.js';
 import { rewards } from '../../data/rewards.js';
-import { $, $$, esc, icon, header, tierBadge, progressBar, pizzaArt, openSheet, toast, tick, fmtDate, emptyState, pointsPill, ledgerLabel } from '../ui.js';
+import { $, $$, esc, icon, header, tierBadge, progressBar, photoImg, openSheet, toast, tick, fmtDate, emptyState, pointsPill, ledgerLabel } from '../ui.js';
 
 let lastBalance = 0;
 const ORDER = ['review', 'eating', 'podcast', 'recipe', 'training', 'job', 'referral'];
@@ -36,7 +36,7 @@ export function render(el, { query }) {
       <ul class="rewards">${rewards.map((r) => {
         const lackPts = bal < r.cost, lackLv = levelRank(lv.current.id) < levelRank(r.minLevel);
         const why = lackLv ? t.needLevel(s.levels[r.minLevel].name) : lackPts ? t.needMore(r.cost - bal) : '';
-        return `<li class="card reward"><div class="reward__art">${pizzaArt(r.seed, '')}</div>
+        return `<li class="card reward"><div class="reward__art">${photoImg(r.id)}</div>
           <div class="reward__body"><h3 class="h3">${esc(r.title)}</h3><p class="muted small">${esc(r.partner)} · ${esc(r.desc)}</p>
             <div class="row row--between"><span class="pts-pill">${icon('slice', { size: 14 })}${esc(s.common.pts(r.cost))}</span>
               <button class="btn btn--positive btn--sm" type="button" data-redeem="${r.id}" ${why ? 'disabled' : ''}>${esc(t.redeem)}</button></div>

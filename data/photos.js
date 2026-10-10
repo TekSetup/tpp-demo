@@ -30,3 +30,13 @@ export function galleryOf(placeId) {
   for (let j = 0; out.length < 6; j++) out.push(file(pool[(placeId * 3 + j) % pool.length]));
   return out;
 }
+
+// Photos for recipes, courses, events, rewards and empty states (same CC0 set, by file number).
+const byId = {
+  'rec-1': 66, 'rec-2': 18, 'rec-3': 32, 'rec-4': 43, 'rec-5': 40,
+  'cur-1': 66, 'cur-2': 5, 'cur-3': 27, 'cur-4': 18,
+  'event-1': 22, 'event-2': 24, 'event-3': 21, 'event-4': 66, 'event-5': 25,
+  'rw-1': 10, 'rw-2': 49, 'rw-3': 30, 'rw-4': 16, 'rw-5': 22, 'rw-6': 46,
+  empty: 32,
+};
+export const photoById = (id) => file(byId[id]);

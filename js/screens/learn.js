@@ -5,7 +5,7 @@ import { navigate } from '../router.js';
 import { isAuthed, isCompleted, markCompleted, earn, earnedIn } from '../state.js';
 import { POINTS, DEMO_PLAYER_SECONDS } from '../../data/config.js';
 import { recipes, courses, podcast } from '../../data/content.js';
-import { $, $$, esc, icon, header, pizzaArt, progressBar, openSheet, requireAuth, notifyEarn, toast } from '../ui.js';
+import { $, $$, esc, icon, header, photoImg, progressBar, openSheet, requireAuth, notifyEarn, toast } from '../ui.js';
 
 const TABS = { recipes: 'recipe', courses: 'training', podcast: 'podcast' };
 
@@ -18,12 +18,12 @@ export function render(el, { query }) {
   const doneMark = (id) => (isCompleted(id) ? `<span class="status status--ok">${icon('check', { size: 14 })}${esc(t.done)}</span>` : '');
 
   const recipesList = () => `<ul class="list-plain">${recipes.map((r) => `<li><button class="media-row" type="button" data-play="${r.id}">
-      <span class="media-row__art">${pizzaArt(r.seed, '')}<span class="media-row__play">${icon('play', { size: 20, fill: true })}</span></span>
+      <span class="media-row__art">${photoImg(r.id)}<span class="media-row__play">${icon('play', { size: 20, fill: true })}</span></span>
       <span class="media-row__main"><b>${esc(r.title)}</b><span class="muted small">${esc(t.minutes(r.minutes))} · ${esc(r.level)}</span><span class="muted small clamp">${esc(r.desc)}</span>${doneMark(r.id)}</span></button></li>`).join('')}</ul>`;
 
   const coursesList = () => `<ul class="list-plain">${courses.map((c) => {
     const n = c.lessons.filter((l) => isCompleted(l.id)).length;
-    return `<li class="card course"><div class="course__head"><div class="course__art">${pizzaArt(c.seed, '')}</div><div><h3 class="h3">${esc(c.title)}</h3><p class="muted small">${esc(c.desc)}</p><p class="small">${esc(t.lessons(c.lessons.length))} · ${n}/${c.lessons.length} ${esc(t.done.toLowerCase())}</p></div></div>
+    return `<li class="card course"><div class="course__head"><div class="course__art">${photoImg(c.id)}</div><div><h3 class="h3">${esc(c.title)}</h3><p class="muted small">${esc(c.desc)}</p><p class="small">${esc(t.lessons(c.lessons.length))} · ${n}/${c.lessons.length} ${esc(t.done.toLowerCase())}</p></div></div>
       <button class="btn btn--text btn--sm" type="button" aria-expanded="false" aria-controls="ls-${c.id}" data-open="${c.id}">${esc(t.lessonsOpen)}${icon('chevron-down', { size: 18 })}</button>
       <ul class="lessons list-plain" id="ls-${c.id}" hidden>${c.lessons.map((l) => `<li><button class="media-row media-row--sm" type="button" data-play="${l.id}"><span class="media-row__play media-row__play--solid">${icon('play', { size: 16, fill: true })}</span><span class="media-row__main"><b>${esc(l.title)}</b><span class="muted small">${esc(t.minutes(l.min))}</span>${doneMark(l.id)}</span></button></li>`).join('')}</ul></li>`;
   }).join('')}</ul>`;
@@ -59,9 +59,9 @@ export function render(el, { query }) {
   }));
 
   const catalog = {};
-  recipes.forEach((r) => { catalog[r.id] = { item: r, kind: 'video', cat: 'recipe', seed: r.seed }; });
-  courses.forEach((c) => c.lessons.forEach((l) => { catalog[l.id] = { item: l, kind: 'video', cat: 'training', seed: c.seed }; }));
-  podcast.episodes.forEach((e) => { catalog[e.id] = { item: e, kind: 'audio', cat: 'podcast', seed: 0 }; });
+  recipes.forEach((r) => { catalog[r.id] = { item: r, kind: 'video', cat: 'recipe', photo: r.id }; });
+  courses.forEach((c) => c.lessons.forEach((l) => { catalog[l.id] = { item: l, kind: 'video', cat: 'training', photo: c.id }; }));
+  podcast.episodes.forEach((e) => { catalog[e.id] = { item: e, kind: 'audio', cat: 'podcast' }; });
 
   $$('[data-play]', el).forEach((b) => b.addEventListener('click', () => openPlayer(catalog[b.dataset.play], () => {
     const open = $$('[aria-expanded=true]', el).map((x) => x.dataset.open);
@@ -70,11 +70,11 @@ export function render(el, { query }) {
   })));
 }
 
-function openPlayer({ item, kind, cat, seed }, onDone) {
+function openPlayer({ item, kind, cat, photo }, onDone) {
   const t = s.learn;
   let pct = 0, timer = null, playing = false;
   const stage = kind === 'video'
-    ? `<div class="player__stage">${pizzaArt(seed, '')}</div>`
+    ? `<div class="player__stage">${photoImg(photo)}</div>`
     : `<div class="player__stage player__stage--audio" aria-hidden="true">${Array.from({ length: 28 }, (_, i) => `<i style="--h:${20 + Math.abs(Math.sin(i * 1.7)) * 70}%"></i>`).join('')}</div>`;
   openSheet({
     title: item.title,

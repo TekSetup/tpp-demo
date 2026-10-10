@@ -83,7 +83,7 @@
 .earn-row__go { display: inline-flex; align-items: center; gap: 2px; color: var(--color-primary); text-align: right; max-width: 6.5rem; }
 .rewards { display: grid; gap: var(--space-3); }
 .reward { display: flex; gap: var(--space-3); padding: var(--space-3); }
-.reward__art { flex: none; width: 76px; border-radius: var(--radius-md); overflow: hidden; }
+.reward__art { flex: none; width: 76px; align-self: stretch; min-height: 76px; border-radius: var(--radius-md); overflow: hidden; }
 .reward__body { display: grid; gap: 6px; flex: 1; min-width: 0; }
 .reward__lock { display: flex; align-items: center; gap: 4px; color: var(--color-text-muted); }
 .ledger-row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }

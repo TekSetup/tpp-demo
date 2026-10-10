@@ -4,14 +4,12 @@ import { s } from './strings.js';
 import { ICONS } from './icons.js';
 import { navigate } from './router.js';
 import { isAuthed, levelRank } from './state.js';
-import { pizzaArt, sliceArt } from './art.js';
 import { places } from '../data/places.js';
 import { jobs } from '../data/jobs.js';
 import { recipes, courses, podcast } from '../data/content.js';
 import { rewards } from '../data/rewards.js';
-import { photoOf } from '../data/photos.js';
+import { photoOf, photoById } from '../data/photos.js';
 
-export { pizzaArt };
 
 export const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 export const $ = (sel, root = document) => root.querySelector(sel);
@@ -58,9 +56,8 @@ export function chip(label, { pressed = false, attrs = '' } = {}) {
 }
 
 export function emptyState({ title, text, cta, action = '', art = true }) {
-  return `<div class="empty">${art ? `<div class="empty__art">${pizzaSlice()}</div>` : ''}<h2 class="h2">${esc(title)}</h2><p class="muted">${esc(text)}</p>${cta ? `<button class="btn btn--primary" type="button" ${action}>${esc(cta)}</button>` : ''}</div>`;
+  return `<div class="empty">${art ? `<div class="empty__art"><img class="photo" src="${photoById('empty')}" alt="" loading="lazy" decoding="async"></div>` : ''}<h2 class="h2">${esc(title)}</h2><p class="muted">${esc(text)}</p>${cta ? `<button class="btn btn--primary" type="button" ${action}>${esc(cta)}</button>` : ''}</div>`;
 }
-const pizzaSlice = () => sliceArt(96);
 
 // ---------- toasts ----------
 export function toast(msg, { type = 'success' } = {}) {
@@ -225,4 +222,9 @@ export function ledgerLabel(e) {
 // Real (CC0) photo for a pizzería. `src` defaults to the venue's main photo; `alt` empty marks it decorative.
 export function placePhoto(placeId, { src = photoOf(placeId), alt = '', eager = false } = {}) {
   return `<img class="photo" src="${esc(src)}" alt="${esc(alt)}" ${eager ? '' : 'loading="lazy"'} decoding="async">`;
+}
+
+// Real (CC0) photo for recipes, courses, events and rewards, by item id (see data/photos.js).
+export function photoImg(id, alt = '') {
+  return `<img class="photo" src="${esc(photoById(id))}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
 }
