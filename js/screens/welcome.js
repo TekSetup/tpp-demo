@@ -17,7 +17,7 @@ export function render(el) {
         </ul>
       </div>
       <div class="welcome__hero">
-        <div class="welcome__logo">${logo(168)}</div>
+        <div class="welcome__logo">${logo(224)}</div>
         <h1 class="welcome__title">${s.welcome.title.map((t) => `<span>${esc(t)}</span>`).join(' ')}</h1>
         <p class="welcome__sub">${esc(s.welcome.sub)}</p>
       </div>
