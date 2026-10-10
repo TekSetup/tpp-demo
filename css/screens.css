@@ -3,7 +3,7 @@
 /* welcome */
 .welcome { display: grid; gap: var(--space-5); padding: var(--space-3) var(--space-5) var(--space-6); align-content: start; min-height: 100%; }
 .welcome__hero { display: grid; justify-items: center; gap: var(--space-3); text-align: center; }
-.welcome__title { font: 400 1.5rem/1.875rem var(--font-display); outline: 0; }
+.welcome__title { font: italic 400 1.5rem/1.875rem var(--font-display); outline: 0; }
 .welcome__title span { display: block; white-space: nowrap; }
 .welcome__sub { color: var(--color-text-muted); max-width: 34ch; font: 400 .875rem/1.25rem var(--font-ui); }
 .perks { display: grid; gap: var(--space-3); }
