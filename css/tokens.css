@@ -1,0 +1,121 @@
+/* Design tokens. Single source of truth (style.md sections 3 to 7). No raw values elsewhere. */
+
+:root {
+  /* brand */
+  --color-primary: #C8231B;
+  --color-primary-strong: #A31A14;
+  --color-primary-soft: #FDE9E6;
+  --color-secondary: #1F7A3A;
+  --color-secondary-soft: #E4F3E8;
+  --color-accent: #F2B632;
+  /* neutrals */
+  --color-bg: #FFF8EE;
+  --color-desk: #EFE3D0;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FFFFFF;
+  --color-border: #EADBC8;
+  --color-text: #2B1D16;
+  --color-text-muted: #6E5C52;
+  --color-on-primary: #FFFFFF;
+  --color-on-accent: #2B1D16;
+  --color-scrim: rgba(43, 29, 22, .55);
+  /* feedback */
+  --color-success: #1F7A3A;
+  --color-warning: #8A5A00;
+  --color-error: #B3261E;
+  --color-info: #1F5FA8;
+  /* tiers */
+  --tier-bronze: #B0693A;
+  --tier-silver: #8E99A6;
+  --tier-gold: #E2A413;
+  /* schematic map */
+  --map-land: #F3E7D3;
+  --map-water: #CFE0E8;
+  --map-park: #CFE3C3;
+  --map-road: #FFFFFF;
+
+  /* type */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --text-display: 700 2rem/2.375rem var(--font-display);
+  --text-h1: 700 1.625rem/2rem var(--font-display);
+  --text-h2: 600 1.25rem/1.625rem var(--font-display);
+  --text-h3: 600 1.0625rem/1.5rem var(--font-ui);
+  --text-body: 400 1rem/1.5rem var(--font-ui);
+  --text-small: 400 .875rem/1.25rem var(--font-ui);
+  --text-caption: 500 .75rem/1rem var(--font-ui);
+  --text-points: 700 2.5rem/2.75rem var(--font-display);
+
+  /* shape and space */
+  --radius-sm: 8px; --radius-md: 14px; --radius-lg: 22px; --radius-pill: 999px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px;
+  --shadow-1: 0 1px 2px rgba(80, 40, 20, .08);
+  --shadow-2: 0 6px 16px rgba(80, 40, 20, .12);
+
+  /* motion */
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --dur-fast: 150ms; --dur: 250ms; --dur-slow: 600ms;
+
+  /* layers */
+  --z-sticky: 10; --z-tabbar: 20; --z-modal: 40; --z-toast: 100;
+  --tabbar-h: 64px;
+}
+
+/* Dark theme: follows the OS unless the user forced light. Both copies must stay identical. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-primary: #FF6B5E;
+    --color-primary-strong: #FF8A7F;
+    --color-primary-soft: #3A1B18;
+    --color-secondary: #4CC070;
+    --color-secondary-soft: #16301E;
+    --color-bg: #1A1210;
+    --color-desk: #0E0907;
+    --color-surface: #241A17;
+    --color-surface-raised: #2E221E;
+    --color-border: #3D2E28;
+    --color-text: #F4E9DD;
+    --color-text-muted: #A8978B;
+    --color-on-primary: #1A1210;
+    --color-on-accent: #1A1210;
+    --color-scrim: rgba(0, 0, 0, .65);
+    --color-success: #4CC070;
+    --color-warning: #F2B632;
+    --color-error: #FF8A80;
+    --color-info: #7AB6FF;
+    --map-land: #2A1F1B;
+    --map-water: #1F3038;
+    --map-park: #22331F;
+    --map-road: #3D2E28;
+    --shadow-1: none;
+    --shadow-2: 0 6px 16px rgba(0, 0, 0, .5);
+  }
+}
+:root[data-theme="dark"] {
+  --color-primary: #FF6B5E;
+  --color-primary-strong: #FF8A7F;
+  --color-primary-soft: #3A1B18;
+  --color-secondary: #4CC070;
+  --color-secondary-soft: #16301E;
+  --color-bg: #1A1210;
+  --color-desk: #0E0907;
+  --color-surface: #241A17;
+  --color-surface-raised: #2E221E;
+  --color-border: #3D2E28;
+  --color-text: #F4E9DD;
+  --color-text-muted: #A8978B;
+  --color-on-primary: #1A1210;
+  --color-on-accent: #1A1210;
+  --color-scrim: rgba(0, 0, 0, .65);
+  --color-success: #4CC070;
+  --color-warning: #F2B632;
+  --color-error: #FF8A80;
+  --color-info: #7AB6FF;
+  --map-land: #2A1F1B;
+  --map-water: #1F3038;
+  --map-park: #22331F;
+  --map-road: #3D2E28;
+  --shadow-1: none;
+  --shadow-2: 0 6px 16px rgba(0, 0, 0, .5);
+}
