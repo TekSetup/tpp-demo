@@ -30,7 +30,7 @@ export default {
   },
 
   welcome: {
-    title: 'La pizza no es una sola, es un mundo.',
+    title: ['La pizza no es una sola,', 'es un mundo.'],
     sub: 'Descubre pizzerías, gana puntos y forma parte de la comunidad pizzera.',
     perks: [
       { icon: 'map-pin', title: 'Encuentra tu pizzería', text: 'Mapa, reseñas y favoritos de gente que sabe de pizza.' },

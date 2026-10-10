@@ -1,9 +1,10 @@
 /* Screen-specific styles. */
 
 /* welcome */
-.welcome { display: grid; gap: var(--space-6); padding: var(--space-8) var(--space-5) var(--space-6); align-content: center; min-height: 100%; }
+.welcome { display: grid; gap: var(--space-5); padding: var(--space-3) var(--space-5) var(--space-6); align-content: start; min-height: 100%; }
 .welcome__hero { display: grid; justify-items: center; gap: var(--space-3); text-align: center; }
-.welcome__title { font: var(--text-display); outline: 0; text-wrap: balance; }
+.welcome__title { font: 400 1.5rem/1.875rem var(--font-display); outline: 0; }
+.welcome__title span { display: block; white-space: nowrap; }
 .welcome__sub { color: var(--color-text-muted); max-width: 32ch; }
 .perks { display: grid; gap: var(--space-4); }
 .perk { display: flex; gap: var(--space-3); align-items: flex-start; }
@@ -149,10 +150,10 @@
 .langbar { display: grid; justify-items: center; gap: var(--space-2); width: 100%; }
 .langbar__title { font: var(--text-caption); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .08em; }
 .langbar__row { display: flex; justify-content: space-between; width: 100%; padding: 0 var(--space-2); }
-.lang { display: grid; justify-items: center; gap: 4px; min-width: 48px; padding: 2px; border-radius: var(--radius-md); }
-.lang__flag { display: block; width: 44px; height: 44px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 1px var(--color-border); transition: box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease); }
+.lang { display: grid; justify-items: center; gap: 3px; min-width: 44px; min-height: 44px; padding: 2px; border-radius: var(--radius-md); }
+.lang__flag { display: block; width: 26px; height: 26px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 1px var(--color-border); transition: box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease); }
 .lang__flag .flag { width: 100%; height: 100%; }
 .lang:active .lang__flag { transform: scale(.94); }
-.lang__code { font: var(--text-caption); font-size: .6875rem; text-transform: uppercase; letter-spacing: .06em; color: var(--color-text-muted); }
-.lang[aria-pressed="true"] .lang__flag { box-shadow: 0 0 0 3px var(--color-primary); }
+.lang__code { font: var(--text-caption); font-size: .625rem; text-transform: uppercase; letter-spacing: .06em; color: var(--color-text-muted); }
+.lang[aria-pressed="true"] .lang__flag { box-shadow: 0 0 0 2px var(--color-primary); }
 .lang[aria-pressed="true"] .lang__code { color: var(--color-primary); font-weight: 600; }
